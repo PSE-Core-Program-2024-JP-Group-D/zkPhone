@@ -117,9 +117,9 @@ class ProofVerifyViewController: UIViewController {
             .replacingOccurrences(of: ",", with: "") // Remove commas
         
         var alertMessage = "Authentication result \(result)"
-        if result {
-            alertMessage = "Authentication result \(result): You have proven that this is your phone number\(phonenumber) by verifying the Proof."
-        }
+//        if result {
+//            alertMessage = "Authentication result \(result): You have proven that this is your phone number\(phonenumber) by verifying the Proof."
+//        }
         let alert = UIAlertController(title: alertMessage, message: errorMessage, preferredStyle: .alert)
         alert.addAction(.init(title: "OK", style: .default))
         present(alert, animated: true)
