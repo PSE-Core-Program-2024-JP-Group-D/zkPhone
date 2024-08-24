@@ -45,4 +45,4 @@ template VerifyPhone() {
     is_valid <== isEqual.out;
 }
 
-component main {public [phone_number, public_hash]} = VerifyPhone();
+component main {public [phone_number]} = VerifyPhone();
