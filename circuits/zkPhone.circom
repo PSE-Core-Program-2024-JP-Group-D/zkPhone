@@ -1,38 +1,48 @@
 pragma circom 2.0.0;
-/*
-    PJ for Hakathon at ETH Tokyo2024 
-*/
+
 include "circomlib/circuits/sha256/sha256.circom";
+include "circomlib/circuits/bitify.circom";
+include "circomlib/circuits/comparators.circom";
 
 template VerifyPhone() {
-    signal input phone_number[88];  // phone number in bit (XXX-XXXX-XXXX ;11bytes)
-    signal input otp_code[32];      // one time pass-code (XXXX )
-    signal input public_hash[256];       // hash is also calculated in advance
-    signal sha_input[120];
-    signal output calchash[256];
+    signal input phone_number;  // phone number as a field element
+    signal input otp_code;      // otp code as a field element
+    signal input public_hash;   // hash as a single field element
+    signal output is_valid;     // 1 if valid, 0 if not
 
-    // Users are required to submit phone number and otp separateley
-    // phone number is public input to reveal their own numers.
-    // this is up to use cases.
+    // Convert phone number to bits
+    component phone2Bits = Num2Bits(64);  // 64 bits can represent up to 20 digits
+    phone2Bits.in <== phone_number;
 
-    // combine the numbers
-    for (var i = 0; i< 88; i++){
-        sha_input[i] <== phone_number[i];
+    // Convert otp code to bits
+    component otp2Bits = Num2Bits(16);  // 16 bits can represent up to 4 digits
+    otp2Bits.in <== otp_code;
+
+    // Combine the bits
+    signal sha_input[80];
+    for (var i = 0; i < 64; i++) {
+        sha_input[i] <== phone2Bits.out[i];
     }
-    for (var i =0; i< 32; i++){
-        sha_input[88+i] <== otp_code[i];
+    for (var i = 0; i < 16; i++) {
+        sha_input[64 + i] <== otp2Bits.out[i];
     }
 
     // SHA256
-    // we could also use Poseidon hash function but modules for iOS app was not found
-    component hashPhoneSHA = Sha256(120); 
+    component hashPhoneSHA = Sha256(80);
     hashPhoneSHA.in <== sha_input;
 
-    for ( var i = 0; i< 256; i++){
-        // constraints based on hash informtion
-        hashPhoneSHA.out[i] === public_hash[i];
+    // Convert SHA256 output to a single field element
+    component bits2Num = Bits2Num(256);
+    for (var i = 0; i < 256; i++) {
+        bits2Num.in[i] <== hashPhoneSHA.out[i];
     }
-    calchash <== hashPhoneSHA.out;
+
+    // Compare calculated hash with public_hash
+    component isEqual = IsEqual();
+    isEqual.in[0] <== bits2Num.out;
+    isEqual.in[1] <== public_hash;
+
+    is_valid <== isEqual.out;
 }
 
-component main{public[phone_number]}  = VerifyPhone();
+component main {public [phone_number]} = VerifyPhone();
