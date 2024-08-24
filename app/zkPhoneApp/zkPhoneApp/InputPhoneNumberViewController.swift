@@ -7,8 +7,11 @@
 
 import Foundation
 import UIKit
+import CryptoKit
 
 class InputPhoneNumberViewController: UIViewController {
+    
+    var textField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +26,7 @@ class InputPhoneNumberViewController: UIViewController {
         label.frame = CGRect(x: 20.0, y: naviHeight + 20.0, width: view.bounds.size.width, height: 20.0)
         view.addSubview(label)
         
-        let textField = UITextField()
+        textField = UITextField()
         textField.textColor = .black
         textField.frame = CGRect(
             x: 20.0,
@@ -43,12 +46,31 @@ class InputPhoneNumberViewController: UIViewController {
             width: 200,
             height: 50
         )
-        smsButton.setTitleColor(.black, for: .normal)
+        smsButton.setTitleColor(.white, for: .normal)
+        smsButton.backgroundColor = UIColor.systemBlue
+        smsButton.clipsToBounds = true
+        smsButton.layer.cornerRadius = 10.0
         smsButton.addTarget(self, action: #selector(smsButtonDidTapped), for: .touchUpInside)
         view.addSubview(smsButton)
     }
     
     @objc func smsButtonDidTapped() {
+        let phone = textField.text ?? ""
+        if phone.isEmpty {
+            let alert = UIAlertController(title: "電話番号を入力してください。", message: nil, preferredStyle: .alert)
+            alert.addAction(.init(title: "OK", style: .default))
+            present(alert, animated: true)
+            return
+        }
+        let hashdPhone = sha256(input: phone)
         
+        let controller = InputSMSViewController(hashdPhoneNumber: hashdPhone)
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    private func sha256(input: String) -> String {
+        let inputData = Data(input.utf8)
+        let hashed = SHA256.hash(data: inputData)
+        return hashed.compactMap { String(format: "%02x", $0) }.joined()
     }
 }

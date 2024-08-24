@@ -8,6 +8,10 @@
 import Foundation
 
 struct Proof {
+    
+    static var proof: String = ""
+    static var publicSignal: String = ""
+    
     static func loadProofBuffer() -> [CChar]? {
        
         let filePath = Bundle.main.path(forResource: "proof", ofType: "json")!

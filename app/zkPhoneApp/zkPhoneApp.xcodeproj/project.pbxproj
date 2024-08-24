@@ -22,6 +22,8 @@
 		7A0963222C799B6900BE3E6F /* zkPhone_0001.zkey in Resources */ = {isa = PBXBuildFile; fileRef = 7A0963212C799B1D00BE3E6F /* zkPhone_0001.zkey */; };
 		7A0963232C799B6900BE3E6F /* witness.wtns in Resources */ = {isa = PBXBuildFile; fileRef = 7A0963202C799B1600BE3E6F /* witness.wtns */; };
 		7A0963252C799E1D00BE3E6F /* InputPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0963242C799E1D00BE3E6F /* InputPhoneNumberViewController.swift */; };
+		7A0963272C79A3C300BE3E6F /* InputSMSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0963262C79A3C300BE3E6F /* InputSMSViewController.swift */; };
+		7A0963292C79A73A00BE3E6F /* ProofVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0963282C79A73A00BE3E6F /* ProofVerifyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		7A0963202C799B1600BE3E6F /* witness.wtns */ = {isa = PBXFileReference; lastKnownFileType = file; path = witness.wtns; sourceTree = "<group>"; };
 		7A0963212C799B1D00BE3E6F /* zkPhone_0001.zkey */ = {isa = PBXFileReference; lastKnownFileType = file; path = zkPhone_0001.zkey; sourceTree = "<group>"; };
 		7A0963242C799E1D00BE3E6F /* InputPhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPhoneNumberViewController.swift; sourceTree = "<group>"; };
+		7A0963262C79A3C300BE3E6F /* InputSMSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSMSViewController.swift; sourceTree = "<group>"; };
+		7A0963282C79A73A00BE3E6F /* ProofVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProofVerifyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,8 @@
 				7A0962F22C7997E600BE3E6F /* SceneDelegate.swift */,
 				7A0962F42C7997E600BE3E6F /* ViewController.swift */,
 				7A0963242C799E1D00BE3E6F /* InputPhoneNumberViewController.swift */,
+				7A0963262C79A3C300BE3E6F /* InputSMSViewController.swift */,
+				7A0963282C79A73A00BE3E6F /* ProofVerifyViewController.swift */,
 				7A0962F62C7997E600BE3E6F /* Main.storyboard */,
 				7A0962F92C7997E600BE3E6F /* Assets.xcassets */,
 				7A0962FB2C7997E600BE3E6F /* LaunchScreen.storyboard */,
@@ -181,12 +187,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A0963292C79A73A00BE3E6F /* ProofVerifyViewController.swift in Sources */,
 				7A09631D2C799A8B00BE3E6F /* VerificationKey.swift in Sources */,
 				7A0963252C799E1D00BE3E6F /* InputPhoneNumberViewController.swift in Sources */,
 				7A09631B2C799A7800BE3E6F /* ZKey.swift in Sources */,
 				7A0963172C799A3F00BE3E6F /* Proof.swift in Sources */,
 				7A0962F52C7997E600BE3E6F /* ViewController.swift in Sources */,
 				7A0962F12C7997E600BE3E6F /* AppDelegate.swift in Sources */,
+				7A0963272C79A3C300BE3E6F /* InputSMSViewController.swift in Sources */,
 				7A0962F32C7997E600BE3E6F /* SceneDelegate.swift in Sources */,
 				7A0963192C799A6200BE3E6F /* WtnsKey.swift in Sources */,
 			);

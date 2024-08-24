@@ -13,15 +13,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var zKey = ZKey.loadZKeyData()!
-        var witness = WtnsKey.loadWtnsKeyData()!
-        let proof = try! groth16Prove(zkey: zKey, witness: witness)
-        print(proof)
-        
-        var v = VerificationKey.loadVerificationKeyData()!
-        let result = try! groth16Verify(proof: proof.proof.data(using: .utf8)!, inputs: proof.publicSignals.data(using: .utf8)!, verificationKey: v)
-        print(result)
-        
         let smsButton = UIButton()
         smsButton.setTitle("電話番号入力画面へ", for: .normal)
         smsButton.frame = CGRect(x: (view.bounds.size.width - 200) / 2, y: (view.bounds.height - 50) / 2, width: 200, height: 50)
@@ -43,7 +34,18 @@ class ViewController: UIViewController {
     }
     
     @objc func verifyButtonDidTapped() {
+        let defaultProof = Proof.proof
+        let defaultPublicSignal = Proof.publicSignal
         
+        if defaultProof.isEmpty || defaultPublicSignal.isEmpty {
+            let alert = UIAlertController(title: "SMS認証をしてProofを作成してください」", message: nil, preferredStyle: .alert)
+            alert.addAction(.init(title: "OK", style: .default))
+            present(alert, animated: true)
+            return
+        }
+        
+        let controller = ProofVerifyViewController(proof: defaultProof, publicSignal: defaultPublicSignal)
+        navigationController?.pushViewController(controller, animated: true)
     }
 
 }
