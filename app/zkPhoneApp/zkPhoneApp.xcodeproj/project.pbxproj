@@ -24,6 +24,8 @@
 		7A0963252C799E1D00BE3E6F /* InputPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0963242C799E1D00BE3E6F /* InputPhoneNumberViewController.swift */; };
 		7A0963272C79A3C300BE3E6F /* InputSMSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0963262C79A3C300BE3E6F /* InputSMSViewController.swift */; };
 		7A0963292C79A73A00BE3E6F /* ProofVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0963282C79A73A00BE3E6F /* ProofVerifyViewController.swift */; };
+		7A09632B2C79B09F00BE3E6F /* public.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A09632A2C79B09F00BE3E6F /* public.json */; };
+		7A09632D2C79B0E000BE3E6F /* Public.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09632C2C79B0E000BE3E6F /* Public.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		7A0963242C799E1D00BE3E6F /* InputPhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPhoneNumberViewController.swift; sourceTree = "<group>"; };
 		7A0963262C79A3C300BE3E6F /* InputSMSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSMSViewController.swift; sourceTree = "<group>"; };
 		7A0963282C79A73A00BE3E6F /* ProofVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProofVerifyViewController.swift; sourceTree = "<group>"; };
+		7A09632A2C79B09F00BE3E6F /* public.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = public.json; sourceTree = "<group>"; };
+		7A09632C2C79B0E000BE3E6F /* Public.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Public.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +102,13 @@
 			children = (
 				7A0963212C799B1D00BE3E6F /* zkPhone_0001.zkey */,
 				7A0963202C799B1600BE3E6F /* witness.wtns */,
+				7A09632A2C79B09F00BE3E6F /* public.json */,
 				7A09631E2C799B1000BE3E6F /* verification_key.json */,
 				7A0963162C799A3F00BE3E6F /* Proof.swift */,
 				7A0963182C799A6200BE3E6F /* WtnsKey.swift */,
 				7A09631A2C799A7800BE3E6F /* ZKey.swift */,
 				7A09631C2C799A8B00BE3E6F /* VerificationKey.swift */,
+				7A09632C2C79B0E000BE3E6F /* Public.swift */,
 			);
 			path = zkSnarks;
 			sourceTree = "<group>";
@@ -177,6 +183,7 @@
 				7A0962FA2C7997E600BE3E6F /* Assets.xcassets in Resources */,
 				7A0962FD2C7997E600BE3E6F /* Base in Resources */,
 				7A0962F82C7997E600BE3E6F /* Base in Resources */,
+				7A09632B2C79B09F00BE3E6F /* public.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +194,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A09632D2C79B0E000BE3E6F /* Public.swift in Sources */,
 				7A0963292C79A73A00BE3E6F /* ProofVerifyViewController.swift in Sources */,
 				7A09631D2C799A8B00BE3E6F /* VerificationKey.swift in Sources */,
 				7A0963252C799E1D00BE3E6F /* InputPhoneNumberViewController.swift in Sources */,

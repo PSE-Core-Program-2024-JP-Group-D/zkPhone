@@ -79,13 +79,13 @@ class InputSMSViewController: UIViewController {
         print("phone num hash: \(String(describing: hashdPhoneNumber))")
         print("sms content hash: \(hashedContent)")
         
-        var zKey = ZKey.loadZKeyData()!
-        var witness = WtnsKey.loadWtnsKeyData()!
+        let zKey = ZKey.loadZKeyData()!
+        let witness = WtnsKey.loadWtnsKeyData()!
         let proof = try! groth16Prove(zkey: zKey, witness: witness)
         
         Proof.proof = proof.proof
         Proof.publicSignal = proof.publicSignals
-        
+                
         let alert = UIAlertController(title: "Proofを作成しました", message: nil, preferredStyle: .alert)
         alert.addAction(.init(title: "OK", style: .default))
         present(alert, animated: true)
