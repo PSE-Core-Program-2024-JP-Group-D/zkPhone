@@ -14,6 +14,13 @@
 		7A0962FA2C7997E600BE3E6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A0962F92C7997E600BE3E6F /* Assets.xcassets */; };
 		7A0962FD2C7997E600BE3E6F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 7A0962FC2C7997E600BE3E6F /* Base */; };
 		7A0963062C7998D500BE3E6F /* rapidsnark in Frameworks */ = {isa = PBXBuildFile; productRef = 7A0963052C7998D500BE3E6F /* rapidsnark */; };
+		7A0963172C799A3F00BE3E6F /* Proof.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0963162C799A3F00BE3E6F /* Proof.swift */; };
+		7A0963192C799A6200BE3E6F /* WtnsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0963182C799A6200BE3E6F /* WtnsKey.swift */; };
+		7A09631B2C799A7800BE3E6F /* ZKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09631A2C799A7800BE3E6F /* ZKey.swift */; };
+		7A09631D2C799A8B00BE3E6F /* VerificationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09631C2C799A8B00BE3E6F /* VerificationKey.swift */; };
+		7A09631F2C799B1000BE3E6F /* verification_key.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A09631E2C799B1000BE3E6F /* verification_key.json */; };
+		7A0963222C799B6900BE3E6F /* zkPhone_0001.zkey in Resources */ = {isa = PBXBuildFile; fileRef = 7A0963212C799B1D00BE3E6F /* zkPhone_0001.zkey */; };
+		7A0963232C799B6900BE3E6F /* witness.wtns in Resources */ = {isa = PBXBuildFile; fileRef = 7A0963202C799B1600BE3E6F /* witness.wtns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +32,13 @@
 		7A0962F92C7997E600BE3E6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A0962FC2C7997E600BE3E6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A0962FE2C7997E600BE3E6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A0963162C799A3F00BE3E6F /* Proof.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Proof.swift; sourceTree = "<group>"; };
+		7A0963182C799A6200BE3E6F /* WtnsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WtnsKey.swift; sourceTree = "<group>"; };
+		7A09631A2C799A7800BE3E6F /* ZKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKey.swift; sourceTree = "<group>"; };
+		7A09631C2C799A8B00BE3E6F /* VerificationKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationKey.swift; sourceTree = "<group>"; };
+		7A09631E2C799B1000BE3E6F /* verification_key.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = verification_key.json; sourceTree = "<group>"; };
+		7A0963202C799B1600BE3E6F /* witness.wtns */ = {isa = PBXFileReference; lastKnownFileType = file; path = witness.wtns; sourceTree = "<group>"; };
+		7A0963212C799B1D00BE3E6F /* zkPhone_0001.zkey */ = {isa = PBXFileReference; lastKnownFileType = file; path = zkPhone_0001.zkey; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +72,7 @@
 		7A0962EF2C7997E600BE3E6F /* zkPhoneApp */ = {
 			isa = PBXGroup;
 			children = (
+				7A0963072C799A1400BE3E6F /* zkSnarks */,
 				7A0962F02C7997E600BE3E6F /* AppDelegate.swift */,
 				7A0962F22C7997E600BE3E6F /* SceneDelegate.swift */,
 				7A0962F42C7997E600BE3E6F /* ViewController.swift */,
@@ -67,6 +82,20 @@
 				7A0962FE2C7997E600BE3E6F /* Info.plist */,
 			);
 			path = zkPhoneApp;
+			sourceTree = "<group>";
+		};
+		7A0963072C799A1400BE3E6F /* zkSnarks */ = {
+			isa = PBXGroup;
+			children = (
+				7A0963212C799B1D00BE3E6F /* zkPhone_0001.zkey */,
+				7A0963202C799B1600BE3E6F /* witness.wtns */,
+				7A09631E2C799B1000BE3E6F /* verification_key.json */,
+				7A0963162C799A3F00BE3E6F /* Proof.swift */,
+				7A0963182C799A6200BE3E6F /* WtnsKey.swift */,
+				7A09631A2C799A7800BE3E6F /* ZKey.swift */,
+				7A09631C2C799A8B00BE3E6F /* VerificationKey.swift */,
+			);
+			path = zkSnarks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,6 +162,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A0963222C799B6900BE3E6F /* zkPhone_0001.zkey in Resources */,
+				7A0963232C799B6900BE3E6F /* witness.wtns in Resources */,
+				7A09631F2C799B1000BE3E6F /* verification_key.json in Resources */,
 				7A0962FA2C7997E600BE3E6F /* Assets.xcassets in Resources */,
 				7A0962FD2C7997E600BE3E6F /* Base in Resources */,
 				7A0962F82C7997E600BE3E6F /* Base in Resources */,
@@ -146,9 +178,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A09631D2C799A8B00BE3E6F /* VerificationKey.swift in Sources */,
+				7A09631B2C799A7800BE3E6F /* ZKey.swift in Sources */,
+				7A0963172C799A3F00BE3E6F /* Proof.swift in Sources */,
 				7A0962F52C7997E600BE3E6F /* ViewController.swift in Sources */,
 				7A0962F12C7997E600BE3E6F /* AppDelegate.swift in Sources */,
 				7A0962F32C7997E600BE3E6F /* SceneDelegate.swift in Sources */,
+				7A0963192C799A6200BE3E6F /* WtnsKey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
