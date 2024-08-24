@@ -21,6 +21,7 @@
 		7A09631F2C799B1000BE3E6F /* verification_key.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A09631E2C799B1000BE3E6F /* verification_key.json */; };
 		7A0963222C799B6900BE3E6F /* zkPhone_0001.zkey in Resources */ = {isa = PBXBuildFile; fileRef = 7A0963212C799B1D00BE3E6F /* zkPhone_0001.zkey */; };
 		7A0963232C799B6900BE3E6F /* witness.wtns in Resources */ = {isa = PBXBuildFile; fileRef = 7A0963202C799B1600BE3E6F /* witness.wtns */; };
+		7A0963252C799E1D00BE3E6F /* InputPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0963242C799E1D00BE3E6F /* InputPhoneNumberViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		7A09631E2C799B1000BE3E6F /* verification_key.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = verification_key.json; sourceTree = "<group>"; };
 		7A0963202C799B1600BE3E6F /* witness.wtns */ = {isa = PBXFileReference; lastKnownFileType = file; path = witness.wtns; sourceTree = "<group>"; };
 		7A0963212C799B1D00BE3E6F /* zkPhone_0001.zkey */ = {isa = PBXFileReference; lastKnownFileType = file; path = zkPhone_0001.zkey; sourceTree = "<group>"; };
+		7A0963242C799E1D00BE3E6F /* InputPhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPhoneNumberViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				7A0962F02C7997E600BE3E6F /* AppDelegate.swift */,
 				7A0962F22C7997E600BE3E6F /* SceneDelegate.swift */,
 				7A0962F42C7997E600BE3E6F /* ViewController.swift */,
+				7A0963242C799E1D00BE3E6F /* InputPhoneNumberViewController.swift */,
 				7A0962F62C7997E600BE3E6F /* Main.storyboard */,
 				7A0962F92C7997E600BE3E6F /* Assets.xcassets */,
 				7A0962FB2C7997E600BE3E6F /* LaunchScreen.storyboard */,
@@ -179,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A09631D2C799A8B00BE3E6F /* VerificationKey.swift in Sources */,
+				7A0963252C799E1D00BE3E6F /* InputPhoneNumberViewController.swift in Sources */,
 				7A09631B2C799A7800BE3E6F /* ZKey.swift in Sources */,
 				7A0963172C799A3F00BE3E6F /* Proof.swift in Sources */,
 				7A0962F52C7997E600BE3E6F /* ViewController.swift in Sources */,

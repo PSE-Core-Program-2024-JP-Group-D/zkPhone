@@ -22,7 +22,6 @@ class ViewController: UIViewController {
         let result = try! groth16Verify(proof: proof.proof.data(using: .utf8)!, inputs: proof.publicSignals.data(using: .utf8)!, verificationKey: v)
         print(result)
         
-        
         let smsButton = UIButton()
         smsButton.setTitle("電話番号入力画面へ", for: .normal)
         smsButton.frame = CGRect(x: (view.bounds.size.width - 200) / 2, y: (view.bounds.height - 50) / 2, width: 200, height: 50)
@@ -39,7 +38,8 @@ class ViewController: UIViewController {
     }
 
     @objc func smsButtonDidTapped() {
-        
+        let controller = InputPhoneNumberViewController()
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     @objc func verifyButtonDidTapped() {
