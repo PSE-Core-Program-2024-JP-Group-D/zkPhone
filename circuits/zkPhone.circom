@@ -2,12 +2,13 @@ pragma circom 2.0.0;
 
 include "circomlib/circuits/sha256/sha256.circom";
 include "circomlib/circuits/bitify.circom";
+include "circomlib/circuits/comparators.circom";
 
 template VerifyPhone() {
     signal input phone_number;  // phone number as a field element
     signal input otp_code;      // otp code as a field element
-    signal input public_hash[256];  // hash is also calculated in advance
-    signal output calchash[256];
+    signal input public_hash;   // hash as a single field element
+    signal output is_valid;     // 1 if valid, 0 if not
 
     // Convert phone number to bits
     component phone2Bits = Num2Bits(64);  // 64 bits can represent up to 20 digits
@@ -27,14 +28,21 @@ template VerifyPhone() {
     }
 
     // SHA256
-    component hashPhoneSHA = Sha256(80); 
+    component hashPhoneSHA = Sha256(80);
     hashPhoneSHA.in <== sha_input;
 
+    // Convert SHA256 output to a single field element
+    component bits2Num = Bits2Num(256);
     for (var i = 0; i < 256; i++) {
-        // constraints based on hash information
-        hashPhoneSHA.out[i] === public_hash[i];
+        bits2Num.in[i] <== hashPhoneSHA.out[i];
     }
-    calchash <== hashPhoneSHA.out;
+
+    // Compare calculated hash with public_hash
+    component isEqual = IsEqual();
+    isEqual.in[0] <== bits2Num.out;
+    isEqual.in[1] <== public_hash;
+
+    is_valid <== isEqual.out;
 }
 
-component main {public [phone_number]} = VerifyPhone();
+component main {public [phone_number, public_hash]} = VerifyPhone();
