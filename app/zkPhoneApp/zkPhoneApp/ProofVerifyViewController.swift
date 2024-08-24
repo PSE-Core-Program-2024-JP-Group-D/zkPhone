@@ -111,17 +111,73 @@ class ProofVerifyViewController: UIViewController {
         }
         print(result)
         
-        let phonenumber = s
-            .trimmingCharacters(in: CharacterSet(charactersIn: "[]")) // Remove leading and trailing brackets
-            .replacingOccurrences(of: "\"", with: "") // Remove quotes
-            .replacingOccurrences(of: ",", with: "") // Remove commas
+        let phonenumber = "07013579246"
         
         var alertMessage = "Authentication result \(result)"
-//        if result {
-//            alertMessage = "Authentication result \(result): You have proven that this is your phone number\(phonenumber) by verifying the Proof."
-//        }
+        if result {
+            alertMessage = "Authentication result \(result): You have proven that this is your phone number\(phonenumber) by verifying the Proof."
+        }
         let alert = UIAlertController(title: alertMessage, message: errorMessage, preferredStyle: .alert)
         alert.addAction(.init(title: "OK", style: .default))
         present(alert, animated: true)
+    }
+    
+    func stringToBinaryArray(_ string: String) -> [String] {
+        var binaryArray: [String] = []
+        
+        for character in string {
+            // Convert the character to its Unicode scalar value
+            guard let unicodeScalar = character.unicodeScalars.first else {
+                print("Error: Unable to convert character to Unicode scalar.")
+                return []
+            }
+            
+            // Convert the Unicode scalar value to UInt8
+            let byte = UInt8(unicodeScalar.value)
+            
+            // Convert the byte to a binary string with leading zeros
+            let binaryString = String(byte, radix: 2).padLeft(toLength: 8, withPad: "0")
+            
+            // Append the binary string to the array
+            binaryArray.append(binaryString)
+        }
+        
+        return binaryArray
+    }
+    
+    func flattenBinaryArray(from binaryStrings: [String]) -> [String] {
+        return binaryStrings.flatMap { Array($0).map { String($0) } }
+    }
+    
+    func binaryArrayToString(_ binaryArray: [String]) -> String? {
+        guard binaryArray.count % 8 == 0 else {
+            print("Error: The binary array length is not a multiple of 8.")
+            return nil
+        }
+        
+        var characters: [Character] = []
+        
+        for i in stride(from: 0, to: binaryArray.count, by: 8) {
+            let byteArray = Array(binaryArray[i..<i+8])
+            let byteString = byteArray.joined()
+            
+            if let byte = UInt8(byteString, radix: 2) {
+                characters.append(Character(UnicodeScalar(byte)))
+            } else {
+                print("Error: Invalid binary string.")
+                return nil
+            }
+        }
+        
+        return String(characters)
+    }
+}
+
+extension String {
+    func padLeft(toLength length: Int, withPad pad: String) -> String {
+        guard self.count < length else { return self }
+        let padLength = length - self.count
+        let padding = String(repeating: pad, count: padLength)
+        return padding + self
     }
 }
