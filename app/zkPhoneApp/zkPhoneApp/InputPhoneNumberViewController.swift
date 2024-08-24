@@ -21,7 +21,7 @@ class InputPhoneNumberViewController: UIViewController {
         let naviHeight: CGFloat = 84.0
         
         let label = UILabel()
-        label.text = "電話番号"
+        label.text = "Your phonenumber"
         label.textColor = .black
         label.frame = CGRect(x: 20.0, y: naviHeight + 20.0, width: view.bounds.size.width, height: 20.0)
         view.addSubview(label)
@@ -39,7 +39,7 @@ class InputPhoneNumberViewController: UIViewController {
         view.addSubview(textField)
         
         let smsButton = UIButton()
-        smsButton.setTitle("SMSを受け取る", for: .normal)
+        smsButton.setTitle("Receive SMS", for: .normal)
         smsButton.frame = CGRect(
             x: (view.bounds.size.width - 200) / 2,
             y: textField.frame.origin.y + textField.frame.size.height + 20.0,
@@ -57,7 +57,7 @@ class InputPhoneNumberViewController: UIViewController {
     @objc func smsButtonDidTapped() {
         let phone = textField.text ?? ""
         if phone.isEmpty {
-            let alert = UIAlertController(title: "電話番号を入力してください。", message: nil, preferredStyle: .alert)
+            let alert = UIAlertController(title: "Please input your phone number", message: nil, preferredStyle: .alert)
             alert.addAction(.init(title: "OK", style: .default))
             present(alert, animated: true)
             return

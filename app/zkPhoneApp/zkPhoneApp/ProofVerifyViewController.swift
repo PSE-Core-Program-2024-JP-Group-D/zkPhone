@@ -68,7 +68,7 @@ class ProofVerifyViewController: UIViewController {
         view.addSubview(publicSignalTextView)
         
         let verifyButton = UIButton()
-        verifyButton.setTitle("Proofを検証", for: .normal)
+        verifyButton.setTitle("Verify the Proof", for: .normal)
         verifyButton.frame = CGRect(
             x: (view.bounds.size.width - 200) / 2,
             y: publicSignalTextView.frame.origin.y + publicSignalTextView.frame.size.height + 20.0,
@@ -87,7 +87,7 @@ class ProofVerifyViewController: UIViewController {
     
         let p = proofTextView.text ?? ""
         if p.isEmpty {
-            let alert = UIAlertController(title: "Proofの中身を入力してください。", message: nil, preferredStyle: .alert)
+            let alert = UIAlertController(title: "Please input the contents of the Proof.", message: nil, preferredStyle: .alert)
             alert.addAction(.init(title: "OK", style: .default))
             present(alert, animated: true)
             return
@@ -95,7 +95,7 @@ class ProofVerifyViewController: UIViewController {
         
         let s = publicSignalTextView.text ?? ""
         if s.isEmpty {
-            let alert = UIAlertController(title: "Public Signalの中身を入力してください。", message: nil, preferredStyle: .alert)
+            let alert = UIAlertController(title: "Please input the contents of the Public Signal", message: nil, preferredStyle: .alert)
             alert.addAction(.init(title: "OK", style: .default))
             present(alert, animated: true)
             return
@@ -111,7 +111,16 @@ class ProofVerifyViewController: UIViewController {
         }
         print(result)
         
-        let alert = UIAlertController(title: "認証結果 \(result)", message: errorMessage, preferredStyle: .alert)
+        let phonenumber = s
+            .trimmingCharacters(in: CharacterSet(charactersIn: "[]")) // Remove leading and trailing brackets
+            .replacingOccurrences(of: "\"", with: "") // Remove quotes
+            .replacingOccurrences(of: ",", with: "") // Remove commas
+        
+        var alertMessage = "Authentication result \(result)"
+        if result {
+            alertMessage = "Authentication result \(result): You have proven that this is your phone number\(phonenumber) by verifying the Proof."
+        }
+        let alert = UIAlertController(title: alertMessage, message: errorMessage, preferredStyle: .alert)
         alert.addAction(.init(title: "OK", style: .default))
         present(alert, animated: true)
     }

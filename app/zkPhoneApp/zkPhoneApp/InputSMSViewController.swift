@@ -32,7 +32,7 @@ class InputSMSViewController: UIViewController {
         let naviHeight: CGFloat = 84.0
         
         let label = UILabel()
-        label.text = "SMSのコンテンツ"
+        label.text = "SMS contents you received"
         label.textColor = .black
         label.frame = CGRect(x: 20.0, y: naviHeight + 20.0, width: view.bounds.size.width, height: 20.0)
         view.addSubview(label)
@@ -50,7 +50,7 @@ class InputSMSViewController: UIViewController {
         view.addSubview(textField)
         
         let proofButton = UIButton()
-        proofButton.setTitle("Proof作成", for: .normal)
+        proofButton.setTitle("Create Proof", for: .normal)
         proofButton.frame = CGRect(
             x: (view.bounds.size.width - 200) / 2,
             y: textField.frame.origin.y + textField.frame.size.height + 20.0,
@@ -68,7 +68,7 @@ class InputSMSViewController: UIViewController {
     @objc func proofButtonDidTapped() {
         let content = textField.text ?? ""
         if content.isEmpty {
-            let alert = UIAlertController(title: "SMSの中身を入力してください。", message: nil, preferredStyle: .alert)
+            let alert = UIAlertController(title: "Please input the contents of the SMS you received", message: nil, preferredStyle: .alert)
             alert.addAction(.init(title: "OK", style: .default))
             present(alert, animated: true)
             return
@@ -86,7 +86,7 @@ class InputSMSViewController: UIViewController {
         Proof.proof = proof.proof
         Proof.publicSignal = proof.publicSignals
                 
-        let alert = UIAlertController(title: "Proofを作成しました", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: "The Proof has been created", message: nil, preferredStyle: .alert)
         alert.addAction(.init(title: "OK", style: .default))
         present(alert, animated: true)
     }
